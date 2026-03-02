@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Sorry</title>
+    <title>For My Favorite Person</title>
     <style>
         body {
             margin: 0;
@@ -12,83 +12,95 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f4f8; /* Soft blue-grey */
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7e2 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
-            color: #333;
+            color: #702459;
         }
 
         .container {
             text-align: center;
-            max-width: 400px;
-            padding: 20px;
-            animation: fadeIn 1.5s ease-out;
+            max-width: 450px;
+            width: 90%;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 20px 40px rgba(214, 51, 132, 0.1);
+            animation: softFadeIn 1.2s ease-out;
         }
 
-        /* GIF Container */
         .gif-wrapper {
             width: 100%;
             height: 250px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite ease-in-out;
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15);
+            object-fit: contain;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin: 10px 0;
-            color: #5c7cfa;
+            color: #d63384;
         }
 
         p {
             font-size: 1.1rem;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 30px;
-            color: #666;
+            color: #862e6e;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 15px 45px;
             font-size: 1.1rem;
             font-weight: bold;
-            background-color: #748ffc;
+            background-color: #ff85a2;
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(255, 133, 162, 0.3);
         }
 
         .btn:hover {
-            background-color: #5c7cfa;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(92, 124, 250, 0.3);
+            background-color: #f76d91;
+            transform: scale(1.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes softFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Confetti style */
-        .confetti {
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .heart-particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ffd43b;
-            animation: fall 3s linear forwards;
+            pointer-events: none;
+            animation: heartFall 3.5s linear forwards;
+            z-index: 10;
         }
 
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        @keyframes heartFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
@@ -96,50 +108,47 @@
 
     <div class="container">
         <div class="gif-wrapper">
-            <img id="1" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ力をZSZmSWQ9ZSZ3PTQ4MA/OPU6wUXRzoPwg/giphy.gif" alt="Sad Face">
+            <img id="mainGif" src="1.gif" alt="Pleading...">
         </div>
         
-        <h1 id="title">Please?</h1>
-        <p id="message">I'm really sorry for what happened. <br> I promise to make it up to you.</p>
+        <h1 id="title">I'm Sorry, Babe</h1>
+        <p id="message">I really hate it when we're not okay. <br> Can you forgive me?</p>
         
-        <button class="btn" id="forgiveBtn" onclick="handleForgiveness()">Forgive me?</button>
+        <button class="btn" id="forgiveBtn" onclick="handleForgiveness()">Forgive me? ✨</button>
     </div>
 
     <script>
         function handleForgiveness() {
-            // 1. Change the GIF to a happy one
+            // 1. Swaps the image to 2.gif
             const gif = document.getElementById('mainGif');
-            gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ力をZSZmSWQ9ZSZ3PTQ4MA/l41lTfuxV5F6h0M5W/giphy.gif"; 
+            gif.src = "2.gif"; 
 
-            // 2. Update text
-            document.getElementById('title').innerText = "Yay! Thank You!";
-            document.getElementById('message').innerText = "You're the best. I won't let you down again! ❤️";
+            // 2. Update the text
+            document.getElementById('title').innerText = "You're the Best!";
+            document.getElementById('message').innerHTML = "I love you so much! <br> Can't wait to see your smile again. ❤️";
             
-            // 3. Hide the button
+            // 3. Hide the button so she can focus on the happy GIF
             const btn = document.getElementById('forgiveBtn');
             btn.style.display = "none";
 
-            // 4. Trigger confetti
-            for (let i = 0; i < 50; i++) {
-                createConfetti();
+            // 4. Trigger the heart shower
+            for (let i = 0; i < 40; i++) {
+                setTimeout(createHeart, i * 60);
             }
         }
 
-        function createConfetti() {
-            const colors = ['#ff8787', '#74c0fc', '#63e6be', '#ffd43b', '#ff922b'];
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = '-10px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.width = (Math.random() * 8 + 5) + 'px';
-            confetti.style.height = confetti.style.width;
-            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        function createHeart() {
+            const hearts = ['🌸', '💖', '✨', '💝', '💕', '🍓'];
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '-20px';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
             
-            document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 3000);
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
         }
     </script>
 </body>
-
 </html>
