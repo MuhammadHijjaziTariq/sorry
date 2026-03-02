@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8; /* Soft blue-grey */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* GIF Container */
+        .gif-wrapper {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            color: #5c7cfa;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: #748ffc;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #5c7cfa;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(92, 124, 250, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Confetti style */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffd43b;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gif-wrapper">
+            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ力をZSZmSWQ9ZSZ3PTQ4MA/OPU6wUXRzoPwg/giphy.gif" alt="Sad Face">
+        </div>
+        
+        <h1 id="title">Please?</h1>
+        <p id="message">I'm really sorry for what happened. <br> I promise to make it up to you.</p>
+        
+        <button class="btn" id="forgiveBtn" onclick="handleForgiveness()">Forgive me?</button>
+    </div>
+
+    <script>
+        function handleForgiveness() {
+            // 1. Change the GIF to a happy one
+            const gif = document.getElementById('mainGif');
+            gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ力をZSZmSWQ9ZSZ3PTQ4MA/l41lTfuxV5F6h0M5W/giphy.gif"; 
+
+            // 2. Update text
+            document.getElementById('title').innerText = "Yay! Thank You!";
+            document.getElementById('message').innerText = "You're the best. I won't let you down again! ❤️";
+            
+            // 3. Hide the button
+            const btn = document.getElementById('forgiveBtn');
+            btn.style.display = "none";
+
+            // 4. Trigger confetti
+            for (let i = 0; i < 50; i++) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#ff8787', '#74c0fc', '#63e6be', '#ffd43b', '#ff922b'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = (Math.random() * 8 + 5) + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
