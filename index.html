@@ -12,9 +12,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Deepest Pink to Hot Pink Gradient */
-            background: linear-gradient(135deg, #1a000d 0%, #4d0026 100%);
-            font-family: 'Arial', sans-serif;
+            /* Pure Pink Gradient - No dark tones */
+            background: linear-gradient(135deg, #ffafcc 0%, #ffc2d1 50%, #fb6f92 100%);
+            font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Soft and friendly */
             overflow: hidden;
             color: #ffffff;
         }
@@ -24,13 +24,13 @@
             max-width: 450px;
             width: 85%;
             padding: 40px;
-            /* Semi-transparent Pink Glass */
-            background: rgba(255, 0, 127, 0.1);
+            /* Bright White/Pink Glass */
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 40px;
-            backdrop-filter: blur(20px);
-            border: 2px solid #ff007f; /* Neon Pink Border */
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.4);
-            animation: softFadeIn 1.5s ease-out;
+            backdrop-filter: blur(10px);
+            border: 4px solid #ff85a2;
+            box-shadow: 0 15px 35px rgba(251, 111, 146, 0.4);
+            animation: bounceIn 1s ease-out;
         }
 
         .gif-wrapper {
@@ -40,60 +40,60 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
-            animation: pulse 2.5s infinite ease-in-out;
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
-            border-radius: 25px;
-            border: 3px solid #ff007f;
-            box-shadow: 0 0 20px #ff007f;
-            object-fit: contain;
+            border-radius: 30px;
+            border: 6px solid #ffb3c1;
+            box-shadow: 0 8px 15px rgba(255, 133, 162, 0.3);
         }
 
         h1 {
             font-size: 2.5rem;
             margin: 10px 0;
-            color: #ff007f; /* THE Pink */
-            text-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
+            color: #ff477e; /* Very Pinky Pink */
+            text-shadow: 2px 2px 0px #ffffff;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 30px;
-            color: #ffb3d9; /* Lighter Pinkish text */
+            color: #c9184a; /* Darker Pink for readability */
+            font-weight: bold;
         }
 
         .btn {
-            padding: 16px 50px;
-            font-size: 1.2rem;
+            padding: 18px 55px;
+            font-size: 1.3rem;
             font-weight: bold;
-            background: #ff007f;
+            background: #ff5c8a;
             color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-            text-transform: uppercase;
+            box-shadow: 0 6px 0px #c9184a; /* Cute 3D effect */
         }
 
         .btn:hover {
-            transform: scale(1.1);
-            background: #ff3399;
-            box-shadow: 0 0 25px #ff007f;
+            transform: translateY(-3px);
+            background: #ff7096;
+            box-shadow: 0 9px 0px #c9184a;
         }
 
-        @keyframes softFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px #c9184a;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
         }
 
         .heart-particle {
@@ -114,44 +114,45 @@
 
     <div class="container">
         <div class="gif-wrapper">
-            <img id="mainGif" src="1.gif" alt="Thinking of you">
+            <img id="mainGif" src="1.gif" alt="Pleading face">
         </div>
         
-        <h1 id="title">I'm so sorry!</h1>
+        <h1 id="title">I'm So Sorry!</h1>
         <p id="message">
-            I feel terrible about your shoulder. 
-            I just wanted to be near you but I didn't know it was uncomfortable. 
-            Forgive me, my love? 🩹💕
+            I hate that your shoulder hurts. 🩹<br>
+            I didn't know the bench was bad.<br>
+            Forgive me, pretty girl? 💕
         </p>
         
-        <button class="btn" id="forgiveBtn" onclick="handleForgiveness()">Yes, I forgive you! 💖</button>
+        <button class="btn" id="forgiveBtn" onclick="handleForgiveness()">Yes, I Forgive You! 💖</button>
     </div>
 
     <script>
         function handleForgiveness() {
+            // Change to 2.gif
             const gif = document.getElementById('mainGif');
             gif.src = "2.gif"; 
 
-            document.getElementById('title').innerText = "Thank You! ❤️";
-            document.getElementById('message').innerHTML = "I promise to be more careful with you. <br> I love you so much! ✨";
+            document.getElementById('title').innerText = "Yay! I Love You!";
+            document.getElementById('message').innerHTML = "I'll be so much more careful!<br>I promise to make you feel better. ❤️";
             
             const btn = document.getElementById('forgiveBtn');
             btn.style.display = "none";
 
-            // Trigger HOT PINK heart shower
+            // Pinkest heart shower ever
             for (let i = 0; i < 60; i++) {
                 setTimeout(createHeart, i * 40);
             }
         }
 
         function createHeart() {
-            const hearts = ['💖', '💕', '💗', '💓', '✨', '🩹'];
+            const hearts = ['💗', '💓', '💞', '🏩', '🍭', '🍓', '🎀'];
             const heart = document.createElement('div');
             heart.className = 'heart-particle';
             heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.top = '-20px';
-            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heart.style.fontSize = (Math.random() * 25 + 20) + 'px';
             
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 4000);
@@ -159,4 +160,3 @@
     </script>
 </body>
 </html>
-
